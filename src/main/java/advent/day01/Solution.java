@@ -3,8 +3,8 @@ package advent.day01;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
@@ -14,40 +14,28 @@ public class Solution {
 
 	public static void main(String[] args) throws IOException {
 		Solution solution = new Solution();
-		System.out.println("step1: "+solution.solveStep1());
-		System.out.println("step2: "+solution.solveStep2());
+		System.out.println("step1: " + solution.solveStep1());
+		System.out.println("step2: " + solution.solveStep2());
 	}
 
 	public int solveStep1() throws IOException {
-		return getTop(1);
+		return getSortedElves().get(0);
 	}
 
 	public int solveStep2() throws IOException {
-		return getTop(3);
-	}
-	
-	public int getTop(int amount) throws IOException {
-		var tot = 0;
-		var elves = getSortedElves();
-		for(int i=1;i<=amount;i++) {
-			tot+=elves.get(elves.size() - i);
-		}
-		return tot;
+		return getSortedElves().stream().limit(3).reduce(0, (a, b) -> a + b);
 	}
 
 	private List<Integer> getSortedElves() throws IOException {
-		var caloriesCurrentElf = 0;
-		var elves = new ArrayList<Integer>();
+		var elves = new LinkedList<Integer>(List.of(0));
 		for (String line : Files.readAllLines(INPUT_FILE)) {
 			if (line.isBlank()) {
-				elves.add(caloriesCurrentElf);
-				caloriesCurrentElf = 0;
+				elves.add(0);
 			} else {
-				caloriesCurrentElf += Integer.parseInt(line);
+				elves.add(elves.removeLast() + Integer.parseInt(line));
 			}
 		}
-		elves.add(caloriesCurrentElf);
-		Collections.sort(elves);
+		Collections.sort(elves, (a, b) -> b - a);
 		return elves;
 	}
 }
