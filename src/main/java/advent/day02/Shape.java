@@ -1,13 +1,19 @@
 package advent.day02;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Set;
 
 public enum Shape {
-	Rock(1,"A","X"), Paper(2,"B","Y"), Scissors(3,"C","Z");
+	Rock(1, "A", "X"), Paper(2, "B", "Y"), Scissors(3, "C", "Z");
 
+	private final static Map<Shape, Shape> wins;
 	private final int score;
 	private final Set<String> aliases;
+
+	static {
+		wins = Map.of(Rock, Scissors, Scissors, Paper, Paper, Rock);
+	}
 
 	Shape(int score, String... aliases) {
 		this.score = score;
@@ -19,16 +25,9 @@ public enum Shape {
 	}
 
 	public int scoreAgainst(Shape shape) {
-		if ((equals(Rock) && shape.equals(Scissors)) || (equals(Paper) && shape.equals(Rock))
-				|| (equals(Scissors) && shape.equals(Paper))) {
-			return 6;
-		} else if (equals(shape)) {
-			return 3;
-		} else {
-			return 0;
-		}
+		return getLoosingShape().equals(shape) ? 6 : equals(shape) ? 3 : 0;
 	}
-	
+
 	public boolean hasAlias(String alias) {
 		return aliases.contains(alias);
 	}
@@ -38,26 +37,15 @@ public enum Shape {
 	}
 
 	public Shape getByOutcome(String outcome) {
-		return "X".equals(outcome)?getLoosingShape():"Y".equals(outcome)?this:getWinningShape();
+		return "X".equals(outcome) ? getLoosingShape() : "Y".equals(outcome) ? this : getWinningShape();
 	}
 
 	Shape getLoosingShape() {
-		if(equals(Rock)) {
-			return Scissors;
-		}else if(equals(Scissors)) {
-			return Paper;
-		}else {
-			return Rock;
-		}
+		return wins.get(this);
 	}
+
 	Shape getWinningShape() {
-		if(equals(Rock)) {
-			return Paper;
-		}else if(equals(Scissors)) {
-			return Rock;
-		}else {
-			return Scissors;
-		}
+		return Arrays.stream(values()).filter(v->v.getLoosingShape().equals(this)).findFirst().get();
 	}
-	
+
 }
