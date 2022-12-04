@@ -1,17 +1,18 @@
 package advent.day03;
 
+import static advent.utils.Utils.input;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-public class SolutionTest {
+public class Day3Test {
 
 	@Test
 	public void test() throws IOException {
-		assertEquals(7716, new Solution().solveStep1());
-		assertEquals(2973, new Solution().solveStep2());
+		assertEquals(7716, new Day3().solveStep1(input("day03")));
+		assertEquals(2973, new Day3().solveStep2(input("day03")));
 	}
-	
+
 }

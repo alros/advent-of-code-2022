@@ -1,26 +1,16 @@
 package advent.day03;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class Solution {
+public class Day3 {
 
-	private static final Path INPUT_FILE = Path.of("input/day3/input.txt");
-//	private static final Path INPUT_FILE = Path.of("input/day3/input-test.txt");
-
-	public static void main(String[] args) throws IOException {
-		Solution solution = new Solution();
-		System.out.println("step1: " + solution.solveStep1());
-		System.out.println("step2: " + solution.solveStep2());
-	}
-
-	public int solveStep1() throws IOException {
-		return Files.readAllLines(INPUT_FILE).stream()
+	public int solveStep1(Stream<String> inputStream) {
+		return inputStream
 			.map(line -> {
 				char[] compartment1 = line.substring(0, line.length()/2).toCharArray();
 				char[] compartment2 = line.substring(line.length()/2, line.length()).toCharArray();
@@ -29,12 +19,12 @@ public class Solution {
 			Arrays.sort(arrays[0]);
 			Arrays.sort(arrays[1]);
 			return findCommonChars(arrays[0],arrays[1])[0];
-		}).map(Solution::toPriority).reduce(0, (a, b) -> a + b);
+		}).map(Day3::toPriority).reduce(0, (a, b) -> a + b);
 	}
 
-	public int solveStep2() throws IOException {
+	public int solveStep2(Stream<String> inputStream) throws IOException {
 		int[] i = { 0 };
-		return Files.readAllLines(INPUT_FILE).stream().map(String::toCharArray)
+		return inputStream.map(String::toCharArray)
 			.map(arr -> new Object[] { i[0]++, arr })
 			.collect(Collectors.groupingBy(arr -> ((int) arr[0]) / 3))
 			.values().stream()
@@ -47,7 +37,7 @@ public class Solution {
 			Arrays.sort(e3);
 			char[] commonE1E2 = findCommonChars(e1, e2);
 			return findCommonChars(commonE1E2, e3)[0];
-		}).map(Solution::toPriority).reduce(0, (a, b) -> a + b);
+		}).map(Day3::toPriority).reduce(0, (a, b) -> a + b);
 	}
 	
 	private char[] findCommonChars(char[] a, char[] b) {
