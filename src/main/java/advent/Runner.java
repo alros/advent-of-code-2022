@@ -1,6 +1,7 @@
 package advent;
 
 import static advent.utils.Utils.input;
+import static advent.utils.Utils.readline;
 
 import java.io.IOException;
 
@@ -8,6 +9,8 @@ import advent.day01.Day1;
 import advent.day02.Day2;
 import advent.day03.Day3;
 import advent.day04.Day4;
+import advent.day05.Day5;
+import advent.day06.Day06;
 
 public class Runner {
 
@@ -20,6 +23,10 @@ public class Runner {
 		System.out.println("day 3 - step 2: "+new Day3().solveStep2(input("day03")));
 		System.out.println("day 4 - step 1: "+new Day4().solveStep1(input("day04")));
 		System.out.println("day 4 - step 2: "+new Day4().solveStep2(input("day04")));
+		System.out.println("day 5 - step 1: "+new Day5().solveStep1(input("day05")));
+		System.out.println("day 5 - step 2: "+new Day5().solveStep2(input("day05")));
+		System.out.println("day 6 - step 1: "+new Day06().solveStep1(readline("day06")));
+		System.out.println("day 6 - step 1: "+new Day06().solveStep2(readline("day06")));
 	}
 
 }
