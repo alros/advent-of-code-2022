@@ -12,7 +12,6 @@ import advent.day05.Day5;
 import advent.day06.Day06;
 import advent.day07.Day07;
 import advent.day07.Day08;
-
 import java.io.IOException;
 
 public class Runner {
