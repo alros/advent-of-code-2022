@@ -3,7 +3,6 @@ package advent.day08;
 import static advent.utils.Utils.input;
 import static org.junit.Assert.assertEquals;
 
-import advent.day07.Day08;
 import java.io.IOException;
 import org.junit.Test;
 

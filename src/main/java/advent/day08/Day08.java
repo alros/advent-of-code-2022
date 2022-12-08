@@ -1,4 +1,4 @@
-package advent.day07;
+package advent.day08;
 
 import java.io.IOException;
 import java.util.Arrays;
