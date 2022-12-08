@@ -11,6 +11,8 @@ import advent.day04.Day4;
 import advent.day05.Day5;
 import advent.day06.Day06;
 import advent.day07.Day07;
+import advent.day07.Day08;
+
 import java.io.IOException;
 
 public class Runner {
@@ -30,5 +32,7 @@ public class Runner {
     System.out.println("day 6 - step 2: " + new Day06().solveStep2(readline("day06")));
     System.out.println("day 7 - step 1: " + new Day07().solveStep1(bufReader("day07")));
     System.out.println("day 7 - step 2: " + new Day07().solveStep2(bufReader("day07")));
+    System.out.println("day 8 - step 1: " + new Day08().solveStep1(input("day08")));
+    System.out.println("day 8 - step 2: " + new Day08().solveStep2(input("day08")));
   }
 }
