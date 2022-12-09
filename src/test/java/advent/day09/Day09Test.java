@@ -46,13 +46,13 @@ public class Day09Test {
 		assertEquals(new Point(2, 0), status.head().getPoint());
 		assertEquals(new Point(1, 0), status.tail().getPoint());
 	}
-	
+
 	@Test
 	public void moveInLineRrope3() {
 		Knot head = day09.rope(3);
 		head.setPoint(new Point(0, 0));
 		Status status = day09.move("R 3", new Status(head, new HashSet<Point>()));
-		
+
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(1, 0)));
 		assertEquals(new Point(3, 0), status.head().getPoint());
@@ -116,7 +116,7 @@ public class Day09Test {
 		assertEquals(new Point(2, 1), status.head().getPoint());
 		assertEquals(new Point(1, 1), status.tail().getPoint());
 	}
-	
+
 	@Test
 	public void moveDiag1Rrope3() {
 		Knot head = day09.rope(3);
@@ -125,7 +125,7 @@ public class Day09Test {
 		assertEquals(9, status.visited().size());
 		assertTrue(status.visited().contains(new Point(1, 1)));
 		assertEquals(new Point(11, 1), status.head().getPoint());
-		for(int i=1;i<=9;i++) {
+		for (int i = 1; i <= 9; i++) {
 			assertEquals(new Point(9, 1), status.tail().getPoint());
 		}
 	}
@@ -242,7 +242,7 @@ public class Day09Test {
 		assertEquals(new Point(2, 2), status.head().getPoint());
 		assertEquals(new Point(2, 1), status.tail().getPoint());
 	}
-	
+
 	@Test
 	public void testWith10() {
 		Knot head = day09.rope(10);
@@ -250,17 +250,17 @@ public class Day09Test {
 		status = new Day09().move("U 4", status);
 		Knot h = status.head();
 		assertEquals(new Point(4, 4), h.getPoint());
-		h=h.next();
+		h = h.next();
 		assertEquals(new Point(4, 3), h.getPoint());
-		h=h.next();
+		h = h.next();
 		assertEquals(new Point(4, 2), h.getPoint());
-		h=h.next();
+		h = h.next();
 		assertEquals(new Point(3, 2), h.getPoint());
-		h=h.next();
+		h = h.next();
 		assertEquals(new Point(2, 2), h.getPoint());
-		h=h.next();
+		h = h.next();
 		assertEquals(new Point(1, 1), h.getPoint());
-		h=h.next();
+		h = h.next();
 		assertEquals(new Point(0, 0), h.getPoint());
 	}
 
@@ -272,8 +272,8 @@ public class Day09Test {
 
 	@Test
 	public void test2() throws IOException {
-//		assertEquals(1, day09.solveStep2(bufReader(prefix, "-test")));
-		assertEquals(36, new Day09().solveStep2(bufReader(prefix,"-test2")));
-//   	assertEquals(?, new Day09().solveStep2(bufReader(prefix)));
+		assertEquals(1, day09.solveStep2(bufReader(prefix, "-test")));
+		assertEquals(36, new Day09().solveStep2(bufReader(prefix, "-test2")));
+		assertEquals(2541, new Day09().solveStep2(bufReader(prefix)));
 	}
 }
