@@ -13,224 +13,208 @@ import org.junit.Test;
 
 public class Day09Test {
 
+	private final Day09 day09 = new Day09();
+
 	@Test
 	public void moveFromOverlapping() {
-		Point head = new Point(0, 0);
-		Point tail = new Point(0, 0);
+		Knot head = day09.rope(2);
 		Set<Point> visited = new HashSet<Point>();
 		Status status;
 
-		status = new Day09().move("R 1", new Status(List.of(head, tail), visited));
+		status = day09.move("R 1", new Status(head, visited));
 		assertEquals(0, status.visited().size());
 
-		status = new Day09().move("L 1", new Status(List.of(head, tail), visited));
+		status = day09.move("L 1", new Status(head, visited));
 		assertEquals(0, status.visited().size());
 
-		status = new Day09().move("U 1", new Status(List.of(head, tail), visited));
+		status = day09.move("U 1", new Status(head, visited));
 		assertEquals(0, status.visited().size());
 
-		status = new Day09().move("D 1", new Status(List.of(head, tail), visited));
+		status = day09.move("D 1", new Status(head, visited));
 		assertEquals(0, status.visited().size());
 	}
 
 	@Test
 	public void moveInLineR() {
-		Point head = new Point(1, 0);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("R 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 0));
+		Status status = day09.move("R 1", new Status(head, new HashSet<Point>()));
 
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(1, 0)));
-		assertEquals(new Point(2, 0), status.head());
-		assertEquals(new Point(1, 0), status.tail());
+		assertEquals(new Point(2, 0), status.head().getPoint());
+		assertEquals(new Point(1, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveInLineL() {
-		Point head = new Point(-1, 0);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("L 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(-1, 0));
+		Status status = new Day09().move("L 1", new Status(head, new HashSet<Point>()));
 
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(-1, 0)));
-		assertEquals(new Point(-2, 0), status.head());
-		assertEquals(new Point(-1, 0), status.tail());
+		assertEquals(new Point(-2, 0), status.head().getPoint());
+		assertEquals(new Point(-1, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveInLineU() {
-		Point head = new Point(0, 1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("U 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(0, 1));
+		Status status = new Day09().move("U 1", new Status(head, new HashSet<Point>()));
 
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(0, 1)));
-		assertEquals(new Point(0, 2), status.head());
-		assertEquals(new Point(0, 1), status.tail());
+		assertEquals(new Point(0, 2), status.head().getPoint());
+		assertEquals(new Point(0, 1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveInLineD() {
-		Point head = new Point(0, -1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("D 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(0, -1));
+		Status status = new Day09().move("D 1", new Status(head, new HashSet<Point>()));
 
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(0, -1)));
-		assertEquals(new Point(0, -2), status.head());
-		assertEquals(new Point(0, -1), status.tail());
+		assertEquals(new Point(0, -2), status.head().getPoint());
+		assertEquals(new Point(0, -1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1U() {
-		Point head = new Point(1, 1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("U 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 1));
+		Status status = new Day09().move("U 1", new Status(head, new HashSet<Point>()));
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(1, 1)));
-		assertEquals(new Point(1, 2), status.head());
-		assertEquals(new Point(1, 1), status.tail());
+		assertEquals(new Point(1, 2), status.head().getPoint());
+		assertEquals(new Point(1, 1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1R() {
-		Point head = new Point(1, 1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("R 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 1));
+		Status status = new Day09().move("R 1", new Status(head, new HashSet<Point>()));
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(1, 1)));
-		assertEquals(new Point(2, 1), status.head());
-		assertEquals(new Point(1, 1), status.tail());
+		assertEquals(new Point(2, 1), status.head().getPoint());
+		assertEquals(new Point(1, 1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1D() {
-		Point head = new Point(-1, -1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("D 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(-1, -1));
+		Status status = new Day09().move("D 1", new Status(head, new HashSet<Point>()));
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(-1, -1)));
-		assertEquals(new Point(-1, -2), status.head());
-		assertEquals(new Point(-1, -1), status.tail());
+		assertEquals(new Point(-1, -2), status.head().getPoint());
+		assertEquals(new Point(-1, -1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1L() {
-		Point head = new Point(-1, -1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("L 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(-1, -1));
+
+		Status status = new Day09().move("L 1", new Status(head, new HashSet<Point>()));
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(-1, -1)));
-		assertEquals(new Point(-2, -1), status.head());
-		assertEquals(new Point(-1, -1), status.tail());
+		assertEquals(new Point(-2, -1), status.head().getPoint());
+		assertEquals(new Point(-1, -1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1DBack() {
-		Point head = new Point(1, 1);
-		Point tail = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("D 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 1));
+		Status status = new Day09().move("D 1", new Status(head, new HashSet<Point>()));
 		assertEquals(0, status.visited().size());
-		assertEquals(new Point(1, 0), status.head());
-		assertEquals(new Point(0, 0), status.tail());
+		assertEquals(new Point(1, 0), status.head().getPoint());
+		assertEquals(new Point(0, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1UBack() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(-1, -1);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("U 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(-1, -1));
+		Status status = new Day09().move("U 1", new Status(head, new HashSet<Point>()));
 		assertEquals(0, status.visited().size());
-		assertEquals(new Point(-1, 0), status.head());
-		assertEquals(new Point(0, 0), status.tail());
+		assertEquals(new Point(-1, 0), status.head().getPoint());
+		assertEquals(new Point(0, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1RBack() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(-1, -1);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("R 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(-1, -1));
+		Status status = new Day09().move("R 1", new Status(head, new HashSet<Point>()));
 		assertEquals(0, status.visited().size());
-		assertEquals(new Point(0, -1), status.head());
-		assertEquals(new Point(0, 0), status.tail());
+		assertEquals(new Point(0, -1), status.head().getPoint());
+		assertEquals(new Point(0, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiag1LBack() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(1, 1);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("L 1", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 1));
+		Status status = new Day09().move("L 1", new Status(head, new HashSet<Point>()));
 		assertEquals(0, status.visited().size());
-		assertEquals(new Point(0, 1), status.head());
-		assertEquals(new Point(0, 0), status.tail());
+		assertEquals(new Point(0, 1), status.head().getPoint());
+		assertEquals(new Point(0, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveDiagLBackMultiple() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(1, 1);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("L 4", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 1));
+		Status status = new Day09().move("L 4", new Status(head, new HashSet<Point>()));
 		assertEquals(2, status.visited().size());
-		assertEquals(new Point(-3, 1), status.head());
-		assertEquals(new Point(-2, 1), status.tail());
+		assertEquals(new Point(-3, 1), status.head().getPoint());
+		assertEquals(new Point(-2, 1), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveLineLBackMultiple() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(1, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("L 4", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(1, 0));
+		Status status = new Day09().move("L 4", new Status(head, new HashSet<Point>()));
 		assertEquals(2, status.visited().size());
-		assertEquals(new Point(-3, 0), status.head());
-		assertEquals(new Point(-2, 0), status.tail());
+		assertEquals(new Point(-3, 0), status.head().getPoint());
+		assertEquals(new Point(-2, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveLineUBackMultiple() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(0, -1);
+		Knot head = day09.rope(2);
+		head.setPoint(new Point(0, -1));
 		Set<Point> visited = new HashSet<Point>(List.of(new Point(0, 0), new Point(0, 1), new Point(0, 2)));
-		Status status = new Day09().move("U 4", new Status(List.of(head, tail), visited));
+		Status status = new Day09().move("U 4", new Status(head, visited));
 		assertEquals(3, status.visited().size());
-		assertEquals(new Point(0, 3), status.head());
-		assertEquals(new Point(0, 2), status.tail());
+		assertEquals(new Point(0, 3), status.head().getPoint());
+		assertEquals(new Point(0, 2), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveLineRDoubleDigits() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("R 40", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		Status status = new Day09().move("R 40", new Status(head, new HashSet<Point>()));
 		assertEquals(39, status.visited().size());
-		assertEquals(new Point(40, 0), status.head());
-		assertEquals(new Point(39, 0), status.tail());
+		assertEquals(new Point(40, 0), status.head().getPoint());
+		assertEquals(new Point(39, 0), status.tail().getPoint());
 	}
 
 	@Test
 	public void moveLineLoop() {
-		Point tail = new Point(0, 0);
-		Point head = new Point(0, 0);
-		Set<Point> visited = new HashSet<Point>();
-		Status status = new Day09().move("R 2", new Status(List.of(head, tail), visited));
+		Knot head = day09.rope(2);
+		Status status = new Day09().move("R 2", new Status(head, new HashSet<Point>()));
 		status = new Day09().move("U 2", status);
 		assertEquals(2, status.visited().size());
-		assertEquals(new Point(2, 2), status.head());
-		assertEquals(new Point(2, 1), status.tail());
+		assertEquals(new Point(2, 2), status.head().getPoint());
+		assertEquals(new Point(2, 1), status.tail().getPoint());
 	}
 
 	@Test
