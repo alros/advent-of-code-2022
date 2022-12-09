@@ -1,7 +1,7 @@
 # Advent Of Code 2022
 
-![Stars](https://img.shields.io/badge/stars%20⭐-16-green)
-![Days Completed](https://img.shields.io/badge/days%20completed-8-green)
+![Stars](https://img.shields.io/badge/stars%20⭐-18-green)
+![Days Completed](https://img.shields.io/badge/days%20completed-9-green)
 
 [Advent of Code](https://adventofcode.com) is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as interview prep, company training, university coursework, practice problems, a speed contest, or to challenge each other.
 
@@ -23,4 +23,6 @@ day 7 - step 1: 1581595
 day 7 - step 2: 1544176
 day 8 - step 1: 1736
 day 8 - step 2: 268800
+day 9 - step 1: 6339
+day 9 - step 2: 2541
 ```
