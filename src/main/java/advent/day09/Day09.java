@@ -8,15 +8,15 @@ import java.util.List;
 public class Day09 {
 
   public long solveStep1(BufferedReader br) throws IOException {
-    Status status = new Status(rope(2), new HashSet<>(List.of(new Point(0, 0))));
-    for (String line = br.readLine(); line != null; line = br.readLine()) {
-      status = move(line, status);
-    }
-    return status.visited().size();
+    return solveStep(br,2);
+  }
+  
+	public int solveStep2(BufferedReader br) throws IOException {
+	  return solveStep(br,10);
   }
 
-  public int solveStep2(BufferedReader br) throws IOException {
-    Status status = new Status(rope(10), new HashSet<>(List.of(new Point(0, 0))));
+  public int solveStep(BufferedReader br, int knots) throws IOException {
+    Status status = new Status(rope(knots), new HashSet<>(List.of(new Point(0, 0))));
     for (String line = br.readLine(); line != null; line = br.readLine()) {
       status = move(line, status);
     }
