@@ -8,11 +8,11 @@ import java.util.List;
 public class Day09 {
 
   public long solveStep1(BufferedReader br) throws IOException {
-    return solveStep(br,2);
+    return solveStep(br, 2);
   }
-  
-	public int solveStep2(BufferedReader br) throws IOException {
-	  return solveStep(br,10);
+
+  public int solveStep2(BufferedReader br) throws IOException {
+    return solveStep(br, 10);
   }
 
   public int solveStep(BufferedReader br, int knots) throws IOException {
