@@ -25,4 +25,9 @@ public class Knot {
 		this.point = point;
 	}
 
+	@Override
+	public String toString() {
+		return "Knot [point=" + point + "]";
+	}
+
 }

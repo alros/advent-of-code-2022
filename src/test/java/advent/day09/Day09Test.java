@@ -13,7 +13,8 @@ import org.junit.Test;
 
 public class Day09Test {
 
-	private final Day09 day09 = new Day09();
+	private static final Day09 day09 = new Day09();
+	private static final String prefix = "day09";
 
 	@Test
 	public void moveFromOverlapping() {
@@ -43,6 +44,18 @@ public class Day09Test {
 		assertEquals(1, status.visited().size());
 		assertTrue(status.visited().contains(new Point(1, 0)));
 		assertEquals(new Point(2, 0), status.head().getPoint());
+		assertEquals(new Point(1, 0), status.tail().getPoint());
+	}
+	
+	@Test
+	public void moveInLineRrope3() {
+		Knot head = day09.rope(3);
+		head.setPoint(new Point(0, 0));
+		Status status = day09.move("R 3", new Status(head, new HashSet<Point>()));
+		
+		assertEquals(1, status.visited().size());
+		assertTrue(status.visited().contains(new Point(1, 0)));
+		assertEquals(new Point(3, 0), status.head().getPoint());
 		assertEquals(new Point(1, 0), status.tail().getPoint());
 	}
 
@@ -102,6 +115,19 @@ public class Day09Test {
 		assertTrue(status.visited().contains(new Point(1, 1)));
 		assertEquals(new Point(2, 1), status.head().getPoint());
 		assertEquals(new Point(1, 1), status.tail().getPoint());
+	}
+	
+	@Test
+	public void moveDiag1Rrope3() {
+		Knot head = day09.rope(3);
+		head.setPoint(new Point(1, 1));
+		Status status = new Day09().move("R 10", new Status(head, new HashSet<Point>()));
+		assertEquals(9, status.visited().size());
+		assertTrue(status.visited().contains(new Point(1, 1)));
+		assertEquals(new Point(11, 1), status.head().getPoint());
+		for(int i=1;i<=9;i++) {
+			assertEquals(new Point(9, 1), status.tail().getPoint());
+		}
 	}
 
 	@Test
@@ -216,14 +242,38 @@ public class Day09Test {
 		assertEquals(new Point(2, 2), status.head().getPoint());
 		assertEquals(new Point(2, 1), status.tail().getPoint());
 	}
+	
+	@Test
+	public void testWith10() {
+		Knot head = day09.rope(10);
+		Status status = new Day09().move("R 4", new Status(head, new HashSet<Point>()));
+		status = new Day09().move("U 4", status);
+		Knot h = status.head();
+		assertEquals(new Point(4, 4), h.getPoint());
+		h=h.next();
+		assertEquals(new Point(4, 3), h.getPoint());
+		h=h.next();
+		assertEquals(new Point(4, 2), h.getPoint());
+		h=h.next();
+		assertEquals(new Point(3, 2), h.getPoint());
+		h=h.next();
+		assertEquals(new Point(2, 2), h.getPoint());
+		h=h.next();
+		assertEquals(new Point(1, 1), h.getPoint());
+		h=h.next();
+		assertEquals(new Point(0, 0), h.getPoint());
+	}
 
 	@Test
-	public void test() throws IOException {
-		String prefix = "day09";
-		assertEquals(13, new Day09().solveStep1(bufReader(prefix, "-test")));
-		assertEquals(6339, new Day09().solveStep1(bufReader(prefix, "")));
-//		assertEquals(1, new Day09().solveStep2(bufReader(prefix,"-test")));
-//		assertEquals(36, new Day09().solveStep2(bufReader(prefix,"-test2")));
+	public void test1() throws IOException {
+		assertEquals(13, day09.solveStep1(bufReader(prefix, "-test")));
+		assertEquals(6339, day09.solveStep1(bufReader(prefix, "")));
+	}
+
+	@Test
+	public void test2() throws IOException {
+//		assertEquals(1, day09.solveStep2(bufReader(prefix, "-test")));
+		assertEquals(36, new Day09().solveStep2(bufReader(prefix,"-test2")));
 //   	assertEquals(?, new Day09().solveStep2(bufReader(prefix)));
 	}
 }
