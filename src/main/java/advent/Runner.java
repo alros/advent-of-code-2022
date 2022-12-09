@@ -4,8 +4,6 @@ import static advent.utils.Utils.bufReader;
 import static advent.utils.Utils.input;
 import static advent.utils.Utils.readline;
 
-import java.io.IOException;
-
 import advent.day01.Day1;
 import advent.day02.Day2;
 import advent.day03.Day3;
@@ -15,6 +13,7 @@ import advent.day06.Day06;
 import advent.day07.Day07;
 import advent.day08.Day08;
 import advent.day09.Day09;
+import java.io.IOException;
 
 public class Runner {
 
