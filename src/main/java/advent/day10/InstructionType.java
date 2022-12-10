@@ -1,17 +1,16 @@
 package advent.day10;
 
 public enum InstructionType {
+  noop(1),
+  addx(2);
 
-	noop(1), addx(2);
+  private int duration;
 
-	private int duration;
+  InstructionType(int duration) {
+    this.duration = duration;
+  }
 
-	InstructionType(int duration) {
-		this.duration = duration;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
-
+  public int getDuration() {
+    return duration;
+  }
 }
