@@ -273,7 +273,7 @@ public class Day09Test {
   @Test
   public void test2() throws IOException {
     assertEquals(1, day09.solveStep2(bufReader(prefix, "-test")));
-    assertEquals(36, new Day09().solveStep2(bufReader(prefix, "-test2")));
-    assertEquals(2541, new Day09().solveStep2(bufReader(prefix)));
+    assertEquals(36, day09.solveStep2(bufReader(prefix, "-test2")));
+    assertEquals(2541, day09.solveStep2(bufReader(prefix)));
   }
 }
