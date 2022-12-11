@@ -19,7 +19,7 @@ public class Day11Test {
 
   @Test
   public void testStep1() throws IOException, ScriptException {
-    assertEquals(72884, day11.solve(bufReader(prefix, ""), 20, 3));
+    assertEquals(72884, day11.solveStep1(bufReader(prefix)));
   }
 
   @Test
@@ -29,6 +29,6 @@ public class Day11Test {
 
   @Test
   public void testStep2() throws IOException, ScriptException {
-    assertEquals(15310845153L, day11.solve(bufReader(prefix), 10000, 1));
+    assertEquals(15310845153L, day11.solveStep2(bufReader(prefix)));
   }
 }
