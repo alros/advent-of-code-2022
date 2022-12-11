@@ -15,7 +15,6 @@ import advent.day08.Day08;
 import advent.day09.Day09;
 import advent.day10.Day10;
 import advent.day11.Day11;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
