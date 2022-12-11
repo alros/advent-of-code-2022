@@ -1,4 +1,4 @@
-# Advent Of Code 2022
+# Advent Of Code 2022 🎄
 
 ![Stars](https://img.shields.io/badge/stars%20⭐-22-green)
 ![Days Completed](https://img.shields.io/badge/days%20completed-11-green)
