@@ -50,3 +50,7 @@ day 12 - step 1: 520
 day 12 - step 1: 508
 
 ```
+
+## Bonus
+### Day 12
+![day 12 visualisation](img/day12.png)
