@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.script.ScriptException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class Day12Test {
@@ -78,5 +79,11 @@ public class Day12Test {
   @Test
   public void testStep2() throws IOException, ScriptException {
     assertEquals(508, day12.solveStep2(bufReader(prefix, "")));
+  }
+  
+  @Test
+  @Ignore //remove @Ignore to run the visualisation 
+  public void testStepDisplay() throws IOException, ScriptException {
+	  new Day12(true).solveStep1(bufReader(prefix, ""));
   }
 }
