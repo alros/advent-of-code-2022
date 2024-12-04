@@ -1,11 +1,10 @@
 package advent.day03;
 
-import org.junit.Test;
-
 import static advent.utils.Utils.input;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import org.junit.Test;
 
 public class Day3Test {
 
