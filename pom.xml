@@ -11,7 +11,7 @@
 		<java.version>17</java.version>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<lombok.version>1.18.20</lombok.version>
+		<lombok.version>1.18.30</lombok.version>
 	</properties>
 
 	<dependencies>
@@ -41,6 +41,14 @@
 			<artifactId>json</artifactId>
 			<version>20220924</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
+
 
 	</dependencies>
 

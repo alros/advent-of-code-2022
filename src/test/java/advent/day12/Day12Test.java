@@ -1,9 +1,7 @@
 package advent.day12;
 
 import static advent.utils.Utils.bufReader;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.*;
 
 import advent.day12.Day12.Point;
 import java.io.IOException;
